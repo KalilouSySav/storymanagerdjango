@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from typing_extensions import Sequence
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,9 +40,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "storymanagerdjango",
+    ...,
+    "corsheaders",
+    ...,
 ]
 
 MIDDLEWARE = [
+    ...,
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    ...,
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -123,3 +132,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ALLOWED_HOSTS = ['kalilou.pythonanywhere.com']  # Ajoutez ici votre nom d'hôte
+CORS_ALLOWED_ORIGINS: Sequence[str] = ['http://localhost:3000']
