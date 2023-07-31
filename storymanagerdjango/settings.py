@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-from typing_extensions import Sequence
+from typing_extensions import Sequence, List
+
+import corsheaders
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,17 +41,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "storymanagerdjango",
-    ...,
     "corsheaders",
-    ...,
+    "storymanagerdjango",
 ]
 
 MIDDLEWARE = [
-    ...,
     "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    ...,
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -134,4 +131,4 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ALLOWED_HOSTS = ['kalilou.pythonanywhere.com']  # Ajoutez ici votre nom d'hôte
-CORS_ALLOWED_ORIGINS: Sequence[str] = ['http://localhost:3000']
+CORS_ALLOWED_ORIGINS: List[str] = ['http://localhost:3000']
